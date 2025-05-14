@@ -15,6 +15,9 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        Juego.generarPalabra();
+        ViewBag.palabra=Juego.generarPalabra();
         return View();
     }
+
 }
