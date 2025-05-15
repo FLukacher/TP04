@@ -4,6 +4,17 @@
 
 <div>
     <h1>Bienvenidos al Ahorcado!</h1>
-    <h2> @ViewBag.palabra</h2>  
+    <h2>@ViewBag.palabra</h2>
     <h2>@ViewBag.palabraOculta</h2>
+
+    <form action='@Url.Action("guardarDatos", "Home")' method="post">
+        <input type="text" name="letraUsada" />
+        <button type="submit">Enviar</button>
+    </form>
+    <h3>Letras usadas: 
+@foreach (var letra in Juego.letrasUsadas)
+{
+    @letra   
+}
+</h3>
 </div>
