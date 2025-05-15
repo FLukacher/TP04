@@ -3,14 +3,14 @@
 <div>
     @* <h2>@ViewBag.palabra</h2>*@
     <h2>@ViewBag.palabraOculta</h2>
-    <form action='@Url.Action("verificarLetra", "Home")' method="post">
+    <form action='@Url.Action("Logica", "Home")' method="post">
         <input type="text" name="letraUsada" maxlength="1" />
         <button type="submit">Enviar</button>
     </form>
     <h3><strong>Letras usadas: </strong></h3>
-    @foreach (string letra in Juego.letrasUsadas)
+    @foreach (string letra in ViewBag.letrasUsadas)
     {
        <strong>@letra</strong> 
     }
-    </h3>
+</h3>
 </div>

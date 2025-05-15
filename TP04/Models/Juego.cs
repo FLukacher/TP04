@@ -12,7 +12,7 @@ public static class Juego
         Random rd = new Random();
         string[] palabras = { "Estrella", "Montaña", "Manteca", "Pancho", "Orquesta", "Vasquito", "Mate", "Electricidad", "Ajedrez" };
         palabra = palabras[rd.Next(palabras.Length)].ToUpper();
-        palabraOculta = new string('-', palabra.Length);  // SIN espacios
+        palabraOculta = new string('-', palabra.Length); 
         letrasUsadas.Clear();
     }
 }

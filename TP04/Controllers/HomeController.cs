@@ -26,28 +26,19 @@ public class HomeController : Controller
         return View("jugar");
     }
     [HttpPost]
-    public IActionResult guardarDatos(string letraUsada)
+    public IActionResult Logica(string letraUsada)
     {
-        if (letraUsada != null)
+        if (!Juego.palabraOculta.Contains("-")) 
         {
-            if (!Juego.letrasUsadas.Contains(letraUsada.ToUpper()))
-            {
-                Juego.letrasUsadas.Add(letraUsada.ToUpper());
-            }
+            return View("ganaste");
         }
-        ViewBag.letrasUsadas = Juego.letrasUsadas;
-
-        return RedirectToAction("jugar");
-
-    }
-    [HttpPost]
-    public IActionResult verificarLetra(string letraUsada)
-    {
-        letraUsada = letraUsada.ToUpper();
-
+        else
+        {
+            letraUsada = letraUsada.ToUpper();
             if (!Juego.letrasUsadas.Contains(letraUsada))
+            {
                 Juego.letrasUsadas.Add(letraUsada);
-
+            }
 
             if (Juego.palabra.Contains(letraUsada))
             {
@@ -55,9 +46,13 @@ public class HomeController : Controller
                 for (int i = 0; i < Juego.palabra.Length; i++)
                 {
                     if (Juego.palabra[i] == letraUsada[0])
+                    {
                         nueva += letraUsada[0];
+                    }
                     else
+                    {
                         nueva += Juego.palabraOculta[i];
+                    }
                 }
                 Juego.palabraOculta = nueva;
             }
@@ -65,5 +60,7 @@ public class HomeController : Controller
             return RedirectToAction("jugar");
         }
     }
+}
+
 
 
