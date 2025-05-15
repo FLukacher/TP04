@@ -12,6 +12,9 @@
         <button type="submit">Enviar</button>
     </form>
     <h3>Letras usadas: 
+    <form action='@Url.Action("verificarLetra", "Home")' method="post">
+
+    </form>
 @foreach (var letra in Juego.letrasUsadas)
 {
     @letra   

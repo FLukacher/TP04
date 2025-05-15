@@ -21,34 +21,44 @@ public class HomeController : Controller
         }
 
         ViewBag.palabra = Juego.palabra;
-        ViewBag.palabraOculta = new string('-', Juego.palabra.Length);
+        ViewBag.palabraOculta = Juego.palabraOculta;
+        ViewBag.letrasUsadas = Juego.letrasUsadas;      
         return View();
     }
     [HttpPost]
     public IActionResult guardarDatos(string letraUsada)
     {
-        if (!string.IsNullOrEmpty(letraUsada))
+        if (letraUsada != null)
         {
-            char letra = letraUsada.ToLower()[0]; // tomamos la primera letra y la pasamos a minúscula
-            if (!Juego.letrasUsadas.Contains(letra))
+            if (!Juego.letrasUsadas.Contains(letraUsada.ToUpper()))
             {
-                Juego.letrasUsadas.Add(letra);
+                Juego.letrasUsadas.Add(letraUsada.ToUpper());
             }
         }
 
         return RedirectToAction("Index");
 
     }
+    [HttpPost]
     public IActionResult verificarLetra(string letraUsada)
     {
         ViewBag.palabra = Juego.palabra;
-        ViewBag.palabraOculta = new string('-', Juego.palabra.Length);
-        if(Juego.palabra.Contains(letraUsada))
+
+        if (Juego.palabra.Contains(letraUsada))
         {
+            letraUsada = letraUsada.ToUpper();
             int index = Juego.palabra.IndexOf(letraUsada);
-            ViewBag.palabraOculta.Replace(letraUsada, 
-            Juego.palabra.IndexOf(letraUsada));
+            foreach(char letra in Juego.palabra)
+            {
+                if(letra == letraUsada[0])
+                {
+                    Juego.palabraOculta = Juego.palabraOculta.Remove(index, 1).Insert(index, letraUsada.ToUpper());
+                }
+            }
         }
-        return RedirectToAction("Index");
+
+        ViewBag.palabraOculta = Juego.palabraOculta;
+
+    return RedirectToAction("Index");
     }
 }
