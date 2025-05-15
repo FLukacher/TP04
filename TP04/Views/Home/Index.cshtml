@@ -4,20 +4,6 @@
 
 <div>
     <h1>Bienvenidos al Ahorcado!</h1>
-    <h2>@ViewBag.palabra</h2>
-    <h2>@ViewBag.palabraOculta</h2>
-
-    <form action='@Url.Action("guardarDatos", "Home")' method="post">
-        <input type="text" name="letraUsada" />
-        <button type="submit">Enviar</button>
-    </form>
-    <h3>Letras usadas: 
-    <form action='@Url.Action("verificarLetra", "Home")' method="post">
-
-    </form>
-@foreach (var letra in Juego.letrasUsadas)
-{
-    @letra   
-}
-</h3>
+    <h1>Pulsa <a href="@Url.Action("Jugar")">Acá</a> para empezar a jugar</h1>
+    <h2>Buena suerte!</h2>
 </div>

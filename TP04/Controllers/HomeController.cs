@@ -14,16 +14,16 @@ public class HomeController : Controller
     }
 
     public IActionResult Index()
+    {  
+        return View();
+    }
+    public IActionResult Jugar()
     {
-        if (Juego.palabra == "")
-        {
-            Juego.generarPalabra();
-        }
-
+        if (Juego.palabra == "") Juego.generarPalabra();
         ViewBag.palabra = Juego.palabra;
         ViewBag.palabraOculta = Juego.palabraOculta;
-        ViewBag.letrasUsadas = Juego.letrasUsadas;      
-        return View();
+        ViewBag.letrasUsadas = Juego.letrasUsadas;    
+        return View("jugar");
     }
     [HttpPost]
     public IActionResult guardarDatos(string letraUsada)
@@ -35,30 +35,35 @@ public class HomeController : Controller
                 Juego.letrasUsadas.Add(letraUsada.ToUpper());
             }
         }
+        ViewBag.letrasUsadas = Juego.letrasUsadas;
 
-        return RedirectToAction("Index");
+        return RedirectToAction("jugar");
 
     }
     [HttpPost]
     public IActionResult verificarLetra(string letraUsada)
     {
-        ViewBag.palabra = Juego.palabra;
+        letraUsada = letraUsada.ToUpper();
 
-        if (Juego.palabra.Contains(letraUsada))
-        {
-            letraUsada = letraUsada.ToUpper();
-            int index = Juego.palabra.IndexOf(letraUsada);
-            foreach(char letra in Juego.palabra)
+            if (!Juego.letrasUsadas.Contains(letraUsada))
+                Juego.letrasUsadas.Add(letraUsada);
+
+
+            if (Juego.palabra.Contains(letraUsada))
             {
-                if(letra == letraUsada[0])
+                string nueva = "";
+                for (int i = 0; i < Juego.palabra.Length; i++)
                 {
-                    Juego.palabraOculta = Juego.palabraOculta.Remove(index, 1).Insert(index, letraUsada.ToUpper());
+                    if (Juego.palabra[i] == letraUsada[0])
+                        nueva += letraUsada[0];
+                    else
+                        nueva += Juego.palabraOculta[i];
                 }
+                Juego.palabraOculta = nueva;
             }
+
+            return RedirectToAction("jugar");
         }
-
-        ViewBag.palabraOculta = Juego.palabraOculta;
-
-    return RedirectToAction("Index");
     }
-}
+
+
