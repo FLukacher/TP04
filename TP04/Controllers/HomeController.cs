@@ -16,7 +16,8 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         Juego.generarPalabra();
-        ViewBag.palabra=Juego.generarPalabra();
+        ViewBag.palabra = Juego.generarPalabra();
+        ViewBag.palabraOculta = new string('-', ViewBag.palabra.Length);
         return View();
     }
 
