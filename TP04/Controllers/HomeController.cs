@@ -39,6 +39,7 @@ public class HomeController : Controller
             if (!Juego.letrasUsadas.Contains(letraUsada))
             {
                 Juego.letrasUsadas.Add(letraUsada);
+                 Juego.intentos++;
             }
 
             if (Juego.palabra.Contains(letraUsada))
@@ -56,15 +57,16 @@ public class HomeController : Controller
                     }
                 }
                 Juego.palabraOculta = nueva;
-            }
-            Juego.intentos++;
+            }                                       
+           
             return RedirectToAction("jugar");
         }
     }
     [HttpPost]
     public IActionResult arriesgarPalabra(string palabraArriesgar)
     {
-        Juego.intentos++;
+        palabraArriesgar = palabraArriesgar.ToUpper();
+        ViewBag.Intentos = Juego.intentos;
         if (palabraArriesgar == Juego.palabra)
         {
             return View("ganaste");
