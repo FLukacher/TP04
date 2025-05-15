@@ -14,21 +14,22 @@ public class HomeController : Controller
     }
 
     public IActionResult Index()
-    {  
+    {
         return View();
     }
     public IActionResult Jugar()
     {
-        if (Juego.palabra == "") Juego.generarPalabra();
+        if (Juego.palabra == null) Juego.generarPalabra();
         ViewBag.palabra = Juego.palabra;
         ViewBag.palabraOculta = Juego.palabraOculta;
-        ViewBag.letrasUsadas = Juego.letrasUsadas;    
+        ViewBag.letrasUsadas = Juego.letrasUsadas;
+        ViewBag.intentos = Juego.intentos;
         return View("jugar");
     }
     [HttpPost]
     public IActionResult Logica(string letraUsada)
     {
-        if (!Juego.palabraOculta.Contains("-")) 
+        if (!Juego.palabraOculta.Contains("-"))
         {
             return View("ganaste");
         }
@@ -56,10 +57,22 @@ public class HomeController : Controller
                 }
                 Juego.palabraOculta = nueva;
             }
-
+            Juego.intentos++;
             return RedirectToAction("jugar");
         }
     }
+    [HttpPost]
+    public IActionResult arriesgarPalabra(string palabraArriesgar)
+    {
+        Juego.intentos++;
+        if (palabraArriesgar == Juego.palabra)
+        {
+            return View("ganaste");
+        }
+        else return View("perdiste");
+        
+    }
+
 }
 
 

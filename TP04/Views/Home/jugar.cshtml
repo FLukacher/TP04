@@ -7,6 +7,11 @@
         <input type="text" name="letraUsada" maxlength="1" />
         <button type="submit">Enviar</button>
     </form>
+    <form action='@Url.Action("arriesgarPalabra", "Home")' method="post">
+        <input type="text" name="palabraArriesgar" maxlength= @ViewBag.palabra.Length/>
+        <button type="submit">Arriesgar palabra</button>
+    </form>
+    <h3><strong>Intentos: @ViewBag.Intentos</strong></h3>
     <h3><strong>Letras usadas: </strong></h3>
     @foreach (string letra in ViewBag.letrasUsadas)
     {
