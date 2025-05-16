@@ -28,7 +28,8 @@ public class HomeController : Controller
     }
     [HttpPost]
     public IActionResult Logica(string letraUsada)
-    {      
+    { 
+        ViewBag.palabra = Juego.palabra;     
         letraUsada = letraUsada.ToUpper();
         if (!Juego.letrasUsadas.Contains(letraUsada))
         {
@@ -61,6 +62,7 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult arriesgarPalabra(string palabraArriesgar)
     {
+        ViewBag.palabra = Juego.palabra;
         palabraArriesgar = palabraArriesgar.ToUpper();
         ViewBag.intentos = Juego.intentos;
         if (palabraArriesgar == Juego.palabra)
