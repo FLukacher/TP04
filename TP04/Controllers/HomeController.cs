@@ -28,45 +28,41 @@ public class HomeController : Controller
     }
     [HttpPost]
     public IActionResult Logica(string letraUsada)
-    {
+    {      
+        letraUsada = letraUsada.ToUpper();
+        if (!Juego.letrasUsadas.Contains(letraUsada))
+        {
+            Juego.letrasUsadas.Add(letraUsada);
+                Juego.intentos++;
+        }
+
+        if (Juego.palabra.Contains(letraUsada))
+        {
+            string nueva = "";
+            for (int i = 0; i < Juego.palabra.Length; i++)
+            {
+                if (Juego.palabra[i] == letraUsada[0])
+                {
+                    nueva += letraUsada[0];
+                }
+                else
+                {
+                    nueva += Juego.palabraOculta[i];
+                }
+            }
+            Juego.palabraOculta = nueva;
+        }                                       
         if (!Juego.palabraOculta.Contains("-"))
         {
             return View("ganaste");
         }
-        else
-        {
-            letraUsada = letraUsada.ToUpper();
-            if (!Juego.letrasUsadas.Contains(letraUsada))
-            {
-                Juego.letrasUsadas.Add(letraUsada);
-                 Juego.intentos++;
-            }
-
-            if (Juego.palabra.Contains(letraUsada))
-            {
-                string nueva = "";
-                for (int i = 0; i < Juego.palabra.Length; i++)
-                {
-                    if (Juego.palabra[i] == letraUsada[0])
-                    {
-                        nueva += letraUsada[0];
-                    }
-                    else
-                    {
-                        nueva += Juego.palabraOculta[i];
-                    }
-                }
-                Juego.palabraOculta = nueva;
-            }                                       
-           
-            return RedirectToAction("jugar");
-        }
+        return RedirectToAction("jugar");        
     }
     [HttpPost]
     public IActionResult arriesgarPalabra(string palabraArriesgar)
     {
         palabraArriesgar = palabraArriesgar.ToUpper();
-        ViewBag.Intentos = Juego.intentos;
+        ViewBag.intentos = Juego.intentos;
         if (palabraArriesgar == Juego.palabra)
         {
             return View("ganaste");
