@@ -1,13 +1,15 @@
 *{
 
+
 }
 html {
   font-size: 14px;
   min-height: 100%;
 }
 body{
-  background-color: rgb(117, 117, 117);
+  background-color: rgb(6, 104, 233);
 }
+
 
 @media (min-width: 768px) {
   html {
@@ -15,24 +17,38 @@ body{
   }
 }
 
+
 body {
   margin: 100px;
   padding: 100px;
+}
+header h1{
+    background-color: white;
+}
+button{
+   background-color: darkcyan;
+   margin: 1%;
+   box-shadow: 3px 4px 3px;
 }
 
 
 .GanarPantalla div{
   background-color: rgb(32, 179, 32);
   text-align: center;
-  margin: 10%;
+  margin: 5%;
   padding: 10%;
   font-size: xx-large;
+  font-style: italic;
  }
 footer {
   margin-top: 10px;
-  padding: 10px;
-  background-color: #f8f9fa;
-  border-top: 1px solid #e9ecef;
+  background-color: blue;
+  box-shadow: 3px 4px 3px;
+ 
 }
+
+
+
+
 
 

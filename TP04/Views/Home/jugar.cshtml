@@ -5,12 +5,13 @@
      @*<h2>@ViewBag.palabra</h2>*@
         <h2>@ViewBag.palabraOculta</h2>
     </div>
-    </div>
+    <div>
         <form action='@Url.Action("Logica", "Home")' method="post">
             <input autocomplete = "off" type="text" name="letraUsada" maxlength="1" />
             <button type="submit">Enviar</button>
         </form>
     </div>
+    <div>
         <form action='@Url.Action("arriesgarPalabra", "Home")' method="post">
             <input autocomplete = "off"type="text" name="palabraArriesgar" maxlength= @ViewBag.palabra.Length/>
             <button type="submit">Arriesgar palabra</button>
