@@ -1,27 +1,37 @@
 ﻿@namespace TP04.Views.Home
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 <section class= "juego">
+<nav>
+    <h2><a href = "@Url.Action("Index")">Inicio</a></h2>
+    </nav>
     <div>
      @*<h2>@ViewBag.palabra</h2>*@
-        <h2>@ViewBag.palabraOculta</h2>
+        <h2>@ViewBag.palabraOculta</h2> 
     </div>
-    <div>
+    
+    <div class="Probar">
+    
         <form action='@Url.Action("Logica", "Home")' method="post">
             <input autocomplete = "off" type="text" name="letraUsada" maxlength="1" />
             <button type="submit">Enviar</button>
         </form>
     </div>
-    <div>
+    <div class="Arriesgar">
         <form action='@Url.Action("arriesgarPalabra", "Home")' method="post">
             <input autocomplete = "off"type="text" name="palabraArriesgar" maxlength= @ViewBag.palabra.Length/>
             <button type="submit">Arriesgar palabra</button>
         </form>
     </div>
+    <div class="Intentos">
         <h3><strong>Intentos: @ViewBag.Intentos</strong></h3>
-        <h3><strong>Letras usadas: </strong></h3>
+    </div>
+    <div class="Letras">
+        <h3><strong>Letras usadas</strong></h3>
         @foreach (string letra in ViewBag.letrasUsadas)
         {
-            <strong>@letra</strong> 
+            @letra  
+            @:&nbsp;  
+
         }
     </div>
 </section>

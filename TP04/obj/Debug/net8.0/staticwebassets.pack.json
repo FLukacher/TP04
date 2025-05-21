@@ -9,6 +9,14 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\TP04\\TP04\\wwwroot\\img\\ganaste.jpg",
+      "PackagePath": "staticwebassets\\img\\ganaste.jpg"
+    },
+    {
+      "Id": "C:\\TP04\\TP04\\wwwroot\\img\\perdiste.jpg",
+      "PackagePath": "staticwebassets\\img\\perdiste.jpg"
+    },
+    {
       "Id": "C:\\TP04\\TP04\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

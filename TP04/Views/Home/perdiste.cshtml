@@ -2,10 +2,14 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 </main>
 <section class= "perderPantalla">
+<nav>
+    <h2><a href = "@Url.Action("Index")">Inicio</a></h2>
+    </nav>
     <div>
         <h1>PERDISTE :(</h1>
         <h2>Arriesgaste la palabra incorrecta</h2>
         <h2>La palabra era @ViewBag.palabra</h2>
+        <img src = "~/img/perdiste.jpg" alt = "perdiste">
     </div>
 </section>
 </main>
