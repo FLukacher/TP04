@@ -34,7 +34,8 @@ public class HomeController : Controller
         if (!Juego.letrasUsadas.Contains(letraUsada))
         {
             Juego.letrasUsadas.Add(letraUsada);
-                Juego.intentos++;
+            Juego.intentos++;
+
         }
 
         if (Juego.palabra.Contains(letraUsada))
@@ -57,6 +58,7 @@ public class HomeController : Controller
         {
             return View("ganaste");
         }
+        
         return RedirectToAction("jugar");        
     }
     [HttpPost]

@@ -1,6 +1,12 @@
+*{
+
+}
 html {
   font-size: 14px;
   min-height: 100%;
+}
+body{
+  background-color: rgb(117, 117, 117);
 }
 
 @media (min-width: 768px) {
@@ -10,14 +16,23 @@ html {
 }
 
 body {
-  margin: 10px;
-  padding: 10px;
+  margin: 100px;
+  padding: 100px;
 }
 
 
+.GanarPantalla div{
+  background-color: rgb(32, 179, 32);
+  text-align: center;
+  margin: 10%;
+  padding: 10%;
+  font-size: xx-large;
+ }
 footer {
   margin-top: 10px;
   padding: 10px;
   background-color: #f8f9fa;
   border-top: 1px solid #e9ecef;
 }
+
+
