@@ -16,7 +16,6 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         Juego.generarPalabra();
-        Juego.intentos = 0;
         return View();
     }
     public IActionResult Jugar()
@@ -29,10 +28,11 @@ public class HomeController : Controller
     }
     [HttpPost]
     public IActionResult PantallaVictoria(string letraUsada)
-    {                                     
+    {
         if (Juego.logicaAhorcado(letraUsada))
         {
-            return View("ganaste");
+            
+            return View("ganaste");          
         }     
         return RedirectToAction("jugar");        
     }

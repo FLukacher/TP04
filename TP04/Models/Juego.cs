@@ -10,6 +10,7 @@ public static class Juego
 
     public static void generarPalabra()
     {
+        intentos = 0;  
         Random rd = new Random();
         string[] palabras = { "Estrella", "Montaña", "Manteca", "Pancho", "Orquesta", "Vasquito", "Mate", "Electricidad", "Ajedrez" };
         palabra = palabras[rd.Next(palabras.Length)].ToUpper();
