@@ -15,11 +15,12 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        Juego.generarPalabra();
+        Juego.intentos = 0;
         return View();
     }
     public IActionResult Jugar()
     {
-        if (Juego.palabra == null) Juego.generarPalabra();
         ViewBag.palabra = Juego.palabra;
         ViewBag.palabraOculta = Juego.palabraOculta;
         ViewBag.letrasUsadas = Juego.letrasUsadas;
@@ -27,38 +28,12 @@ public class HomeController : Controller
         return View("jugar");
     }
     [HttpPost]
-    public IActionResult Logica(string letraUsada)
-    { 
-        ViewBag.palabra = Juego.palabra;     
-        letraUsada = letraUsada.ToUpper();
-        if (!Juego.letrasUsadas.Contains(letraUsada))
-        {
-            Juego.letrasUsadas.Add(letraUsada);
-            Juego.intentos++;
-
-        }
-
-        if (Juego.palabra.Contains(letraUsada))
-        {
-            string nueva = "";
-            for (int i = 0; i < Juego.palabra.Length; i++)
-            {
-                if (Juego.palabra[i] == letraUsada[0])
-                {
-                    nueva += letraUsada[0];
-                }
-                else
-                {
-                    nueva += Juego.palabraOculta[i];
-                }
-            }
-            Juego.palabraOculta = nueva;
-        }                                       
-        if (!Juego.palabraOculta.Contains("-"))
+    public IActionResult PantallaVictoria(string letraUsada)
+    {                                     
+        if (Juego.logicaAhorcado(letraUsada))
         {
             return View("ganaste");
-        }
-        
+        }     
         return RedirectToAction("jugar");        
     }
     [HttpPost]
