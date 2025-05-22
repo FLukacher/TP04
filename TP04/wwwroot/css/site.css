@@ -1,14 +1,18 @@
 *{
 
 
+
+
 }
 html {
   font-size: 14px;
   min-height: 100%;
 }
 body{
-  background-color: rgb(6, 104, 233);
+  background-color: rgb(139, 139, 139);
 }
+
+
 
 
 @media (min-width: 768px) {
@@ -18,6 +22,8 @@ body{
 }
 
 
+
+
 body {
   margin: 100px;
   padding: 100px;
@@ -25,11 +31,28 @@ body {
 header h1{
     background-color: white;
 }
-button{
-   background-color: darkcyan;
-   margin: 1%;
-   box-shadow: 3px 4px 3px;
+.Probar button{
+  background-color: rgb(143, 142, 142);    
+  margin: 1%;
+  box-shadow: 3px 4px 3px;
 }
+.Arriesgar button{
+  background-color: rgb(107, 107, 107); 
+  margin: 1%;
+  box-shadow: 3px 4px 3px;
+
+
+}
+nav{
+  background-color: rgb(80, 80, 80);
+}
+nav a{
+  background-color: rgb(189, 189, 189);
+  border: 2px solid #000; 
+  box-shadow: 3px 4px 3px; 
+  color: #000 ;
+}
+
 
 .GanarPantalla div{
   background-color: rgb(32, 179, 32);
@@ -38,12 +61,15 @@ button{
   padding: 5%;
   font-size: xx-large;
   font-style: italic;
+  border: 2px solid #000; 
+  box-shadow: 3px 4px 3px; 
  }
 footer {
   margin-top: 10px;
-  background-color: blue;
+  background-color: rgb(77, 77, 77);
   box-shadow: 3px 4px 3px;
  }
+
 
  .perderPantalla{
   background-color: rgb(230, 0, 0);
@@ -52,17 +78,26 @@ footer {
   padding: 5%;
   font-size: xx-large;
   font-style: italic;
+  border: 2px solid #000; 
+  box-shadow: 3px 4px 3px; 
  } 
 .Letras{
   border: 2px solid #000; 
-  padding:5px; 
-  margin: 3px; 
   height: auto;
-  background-color: darkcyan; 
-  width: fit-content;
+  background-color: rgb(122, 122, 122); 
   box-shadow: 3px 4px 3px;
+  font-size: x-large;
 }
 
+
+.Intentos{
+  border: 2px solid #000; 
+  padding: 5px; 
+  margin: 3px 0 3px auto; 
+  height: auto;
+  background-color: rgb(82, 82, 82); 
+  box-shadow: 3px 4px 3px;
+}
 
 
 
