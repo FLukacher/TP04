@@ -1,4 +1,6 @@
 namespace TP04.Models;
+using Newtonsoft.Json;
+
 
 public static class Juego
 {
